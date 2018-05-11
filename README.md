@@ -1,5 +1,8 @@
 # RegexpPropertyValues
 
+[![Gem Version](https://badge.fury.io/rb/regexp_property_values.svg)](http://badge.fury.io/rb/regexp_property_values)
+[![Build Status](https://travis-ci.org/janosch-x/regexp_property_values.svg?branch=master)](https://travis-ci.org/janosch-x/regexp_property_values)
+
 This microlibrary lets you see which property values are supported by the regular expression engine of the Ruby version you are running.
 
 That is, it determines all supported values for `\p{value}` expressions.
