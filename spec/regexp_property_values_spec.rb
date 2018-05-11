@@ -31,8 +31,8 @@ RSpec.describe RegexpPropertyValues do
     if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.0.0')
       it 'includes recently added properties' do
         result = described_class.all
-        expect(result).to include('Age=7.0')
-        expect(result).to include('Palmyrene')
+        expect(result).to include('Age=6.1')
+        expect(result).to include('Chakma')
         expect(result).to include('In_Arabic')
       end
 
@@ -42,8 +42,8 @@ RSpec.describe RegexpPropertyValues do
     else # ruby 1.9.3 and below - Oniguruma regex engine
       it 'does not include recently added properties' do
         result = described_class.all
-        expect(result).not_to include('Age=7.0')
-        expect(result).not_to include('Palmyrene')
+        expect(result).not_to include('Age=6.1')
+        expect(result).not_to include('Chakma')
         expect(result).not_to include('In_Arabic')
       end
 
