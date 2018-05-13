@@ -28,27 +28,46 @@ RSpec.describe RegexpPropertyValues do
       expect(result).to include('Math')
     end
 
+    it 'includes recently added properties irrespective of Ruby version' do
+      result = described_class.all
+      expect(result).to include('Age=6.1')
+      expect(result).to include('Chakma')
+      expect(result).to include('In_Arabic')
+    end
+
+    it 'includes the dropped `Newline` property irrespective of Ruby version' do
+      expect(described_class.all).to include('Newline')
+    end
+  end
+
+  describe '::all_for_current_ruby' do
+    it 'returns an array of property names' do
+      result = described_class.all_for_current_ruby
+      expect(result).to include('Alpha')
+      expect(result).to include('Space')
+    end
+
     if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.0.0')
       it 'includes recently added properties' do
-        result = described_class.all
+        result = described_class.all_for_current_ruby
         expect(result).to include('Age=6.1')
         expect(result).to include('Chakma')
         expect(result).to include('In_Arabic')
       end
 
-      it 'does not include the abandoned `Newline` property' do
-        expect(described_class.all).not_to include('Newline')
+      it 'does not include the dropped `Newline` property' do
+        expect(described_class.all_for_current_ruby).not_to include('Newline')
       end
     else # ruby 1.9.3 and below - Oniguruma regex engine
       it 'does not include recently added properties' do
-        result = described_class.all
+        result = described_class.all_for_current_ruby
         expect(result).not_to include('Age=6.1')
         expect(result).not_to include('Chakma')
         expect(result).not_to include('In_Arabic')
       end
 
-      it 'includes the abandoned `Newline` property' do
-        expect(described_class.all).to include('Newline')
+      it 'includes the dropped `Newline` property' do
+        expect(described_class.all_for_current_ruby).to include('Newline')
       end
     end
   end
@@ -97,10 +116,20 @@ RSpec.describe RegexpPropertyValues do
   end
 
   describe '::alias_hash' do
+    before { allow(described_class).to receive(:puts) } # silence
+
     it 'returns a hash of all short aliases mapping to their long variants' do
-      allow(described_class).to receive(:puts) # silence
-      allow(described_class).to receive(:all).and_return(%w[AHex Grek Greek])
+      allow(described_class).to receive(:all).and_return(
+        %w[AHex Grek Greek].map { |e| described_class.value(e) }
+      )
       expect(described_class.alias_hash).to eq('Grek' => 'Greek')
+    end
+
+    it 'maps short aliases to non-posix long names' do
+      allow(described_class).to receive(:all).and_return(
+        %w[Cntrl Cc Cntrl Control Cntrl].map { |e| described_class.value(e) }
+      )
+      expect(described_class.alias_hash).to eq('Cc' => 'Control')
     end
   end
 end

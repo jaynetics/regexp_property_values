@@ -1,4 +1,5 @@
-require "regexp_property_values/version"
+require 'regexp_property_values/value_extension'
+require 'regexp_property_values/version'
 
 module RegexpPropertyValues
   module_function
@@ -20,15 +21,17 @@ module RegexpPropertyValues
     by_category.values.flatten
   end
 
+  def all_for_current_ruby
+    all.select(&:supported_by_current_ruby?)
+  end
+
   def by_category
     result = File.foreach(file_path).inject({}) do |hash, line|
       if /^\* (?<category>\S.+)/ =~ line
         @current_category = category
         hash[@current_category] ||= []
-      elsif /^ {4}(?<property>\S.*)/ =~ line
-        # only include props that are supported by the host ruby version
-        begin /\p{#{property}}/u; rescue RegexpError, SyntaxError; next hash end
-        hash[@current_category] << property
+      elsif /^ {4}(?<value_name>\S.*)/ =~ line
+        hash[@current_category] << value(value_name)
       end
       hash
     end
@@ -36,10 +39,15 @@ module RegexpPropertyValues
     result
   end
 
+  def add_oniguruma_properties(props_by_category)
+    props_by_category['Special'] << value('Newline')
+  end
+
   def alias_hash
     short_names, long_names = short_and_long_names
     return {} if short_names.empty?
 
+    long_names -= by_category['POSIX brackets']
     by_matched_characters.each_value.inject({}) do |hash, props|
       next hash if props.count < 2
       long_name = (props & long_names)[0] || fail("no long name for #{props}")
@@ -60,18 +68,19 @@ module RegexpPropertyValues
 
   def by_matched_characters
     puts 'Establishing property characters, this may take a bit ...'
-    all.group_by { |prop| matched_characters(prop) }
+    all.group_by(&:matched_characters)
   end
 
   def matched_characters(prop)
-    @characters ||= ((0..55_295).to_a + (57_344..1_114_111).to_a)
-                    .map { |cp_number| [cp_number].pack('U') }
-    prop_regex = /\p{#{prop}}/u
-    @characters.select { |char| prop_regex.match(char) }
+    value(prop).matched_characters
   end
 
-  def add_oniguruma_properties(props_by_category)
-    return if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.0.0')
-    props_by_category['Special'] << 'Newline'
+  def supported_by_current_ruby?(prop)
+    value(prop).supported_by_current_ruby?
+  end
+
+  def value(prop)
+    prop.singleton_class.send(:include, ValueExtension)
+    prop
   end
 end
