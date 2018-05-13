@@ -17,6 +17,7 @@
 bbin/
 binstubs/*
 bundler_stubs/*/.yardoc
+Gemfile.lock
 /.bundle/
 /_yardoc/
 /coverage/
