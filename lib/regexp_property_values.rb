@@ -68,7 +68,7 @@ module RegexpPropertyValues
 
   def by_matched_characters
     puts 'Establishing property characters, this may take a bit ...'
-    all.group_by(&:matched_characters)
+    all_for_current_ruby.group_by(&:matched_characters)
   end
 
   def matched_characters(prop)
