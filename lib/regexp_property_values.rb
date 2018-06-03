@@ -80,7 +80,7 @@ module RegexpPropertyValues
      matched_codepoints
      matched_ranges
      supported_by_current_ruby?].each do |mthd|
-    define_method(mthd) { |prop| value(prop).send(mthd) }
+    define_singleton_method(mthd) { |prop| value(prop).send(mthd) }
   end
 
   def value(prop)

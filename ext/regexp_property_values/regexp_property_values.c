@@ -2,8 +2,8 @@
 #include "ruby/encoding.h"
 #include "ruby/oniguruma.h" // still in recent rubies f. backwards compatibility
 
-static int prop_name_to_ctype(const char* name, rb_encoding *enc) {
-  const UChar *uname;
+static int prop_name_to_ctype(char* name, rb_encoding *enc) {
+  UChar *uname;
   int ctype;
 
   uname = (UChar*)name;
@@ -18,7 +18,7 @@ VALUE onig_ranges_to_rb(const OnigCodePoint *onig_ranges) {
   VALUE result, sub_range;
 
   range_count = onig_ranges[0];
-  result = rb_ary_new_capa(range_count);
+  result = rb_ary_new2(range_count); // rb_ary_new_capa not avail. in Ruby 2.0
 
   for (i = 0; i < range_count; i++) {
     sub_range = rb_range_new(INT2FIX(onig_ranges[(i * 2) + 1]),
@@ -30,7 +30,7 @@ VALUE onig_ranges_to_rb(const OnigCodePoint *onig_ranges) {
   return result;
 }
 
-VALUE rb_prop_ranges(const char* name, rb_encoding *enc) {
+VALUE rb_prop_ranges(char* name, rb_encoding *enc) {
   int ctype;
   const OnigCodePoint *onig_ranges;
   OnigCodePoint sb_out;
