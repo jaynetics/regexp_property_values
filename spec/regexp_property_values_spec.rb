@@ -115,6 +115,24 @@ RSpec.describe RegexpPropertyValues do
     end
   end
 
+  describe '::matched_codepoints' do
+    it 'returns all codepoints matched by the property' do
+      expect(described_class.matched_codepoints('AHex')).to eq(
+        [48, 49, 50, 51, 52, 53, 54, 55, 56, 57,
+         65, 66, 67, 68, 69, 70,
+         97, 98, 99, 100, 101, 102]
+      )
+    end
+  end
+
+  describe '::matched_ranges' do
+    it 'returns all codepoint ranges matched by the property' do
+      expect(described_class.matched_ranges('AHex')).to eq(
+        [48..57, 65..70, 97..102]
+      )
+    end
+  end
+
   describe '::alias_hash' do
     before { allow(described_class).to receive(:puts) } # silence
 

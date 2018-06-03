@@ -1,3 +1,8 @@
+begin
+  require 'regexp_property_values/regexp_property_values'
+rescue LoadError
+  warn 'regexp_property_values could not load C extension, using slower Ruby'
+end
 require 'regexp_property_values/value_extension'
 require 'regexp_property_values/version'
 
@@ -48,7 +53,7 @@ module RegexpPropertyValues
     return {} if short_names.empty?
 
     long_names -= by_category['POSIX brackets']
-    by_matched_characters.each_value.inject({}) do |hash, props|
+    by_matched_codepoints.each_value.inject({}) do |hash, props|
       next hash if props.count < 2
       long_name = (props & long_names)[0] || fail("no long name for #{props}")
       (props & short_names).each { |short_name| hash[short_name] = long_name }
@@ -66,17 +71,16 @@ module RegexpPropertyValues
     end
   end
 
-  def by_matched_characters
-    puts 'Establishing property characters, this may take a bit ...'
-    all_for_current_ruby.group_by(&:matched_characters)
+  def by_matched_codepoints
+    puts 'Establishing property codepoints, this may take a bit ...'
+    all_for_current_ruby.group_by(&:matched_codepoints)
   end
 
-  def matched_characters(prop)
-    value(prop).matched_characters
-  end
-
-  def supported_by_current_ruby?(prop)
-    value(prop).supported_by_current_ruby?
+  %w[matched_characters
+     matched_codepoints
+     matched_ranges
+     supported_by_current_ruby?].each do |mthd|
+    define_method(mthd) { |prop| value(prop).send(mthd) }
   end
 
   def value(prop)

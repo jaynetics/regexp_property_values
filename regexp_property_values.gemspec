@@ -8,11 +8,10 @@ Gem::Specification.new do |s|
   s.authors       = ['Janosch Müller']
   s.email         = ['janosch84@gmail.com']
 
-  s.summary       = "Lists property values supported by Ruby's regex engine"
-  s.description   = 'This microlibrary lets you see which property values are '\
-                    'supported by the regular expression engine of the Ruby '\
-                    'version you are running. That is, it determines all '\
-                    'supported values for `\p{value}` expressions.'
+  s.summary       = "Inspect property values supported by Ruby's regex engine"
+  s.description   = 'This small library lets you see which property values '\
+                    'are supported by the regular expression engine of the '\
+                    'Ruby version you are running, and what they match.'
   s.homepage      = 'https://github.com/janosch-x/regexp_property_values'
   s.license       = 'MIT'
 
@@ -21,7 +20,12 @@ Gem::Specification.new do |s|
   end
   s.require_paths = ['lib']
 
+  s.extensions = %w[ext/regexp_property_values/extconf.rb]
+
+  s.required_ruby_version = '>= 2.0.0'
+
   s.add_development_dependency 'bundler', '~> 1.16'
   s.add_development_dependency 'rake', '~> 10.0'
+  s.add_development_dependency 'rake-compiler', '~> 1.0'
   s.add_development_dependency 'rspec', '~> 3.0'
 end
