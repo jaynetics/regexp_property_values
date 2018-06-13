@@ -107,45 +107,19 @@ RSpec.describe RegexpPropertyValues do
     end
   end
 
-  describe '::matched_characters' do
-    it 'returns all characters matched by the property' do
-      expect(described_class.matched_characters('AHex')).to eq(
-        %w[0 1 2 3 4 5 6 7 8 9 A B C D E F a b c d e f]
-      )
-    end
-  end
-
-  describe '::matched_codepoints' do
-    it 'returns all codepoints matched by the property' do
-      expect(described_class.matched_codepoints('AHex')).to eq(
-        [48, 49, 50, 51, 52, 53, 54, 55, 56, 57,
-         65, 66, 67, 68, 69, 70,
-         97, 98, 99, 100, 101, 102]
-      )
-    end
-  end
-
-  describe '::matched_ranges' do
-    it 'returns all codepoint ranges matched by the property' do
-      expect(described_class.matched_ranges('AHex')).to eq(
-        [48..57, 65..70, 97..102]
-      )
-    end
-  end
-
   describe '::alias_hash' do
     before { allow(described_class).to receive(:puts) } # silence
 
     it 'returns a hash of all short aliases mapping to their long variants' do
       allow(described_class).to receive(:all).and_return(
-        %w[AHex Grek Greek].map { |e| described_class.value(e) }
+        %w[AHex Grek Greek].map { |e| described_class[e] }
       )
       expect(described_class.alias_hash).to eq('Grek' => 'Greek')
     end
 
     it 'maps short aliases to non-posix long names' do
       allow(described_class).to receive(:all).and_return(
-        %w[Cntrl Cc Cntrl Control Cntrl].map { |e| described_class.value(e) }
+        %w[Cntrl Cc Cntrl Control Cntrl].map { |e| described_class[e] }
       )
       expect(described_class.alias_hash).to eq('Cc' => 'Control')
     end

@@ -1,7 +1,9 @@
 module RegexpPropertyValues
-  module ValueExtension
+  module Extension
     def supported_by_current_ruby?
-      begin !!regexp; rescue RegexpError, SyntaxError; false end
+      !!regexp
+    rescue RegexpError, SyntaxError
+      false
     end
 
     def regexp

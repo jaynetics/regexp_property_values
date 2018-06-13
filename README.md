@@ -34,12 +34,12 @@ PV.by_category.map { |k, v| [k, v.select(&:supported_by_current_ruby?] }
 ##### Inspect properties
 
 ```ruby
-PV.supported_by_current_ruby?('alpha') # => true
-PV.supported_by_current_ruby?('foobar') # => false
+PV['alpha'].supported_by_current_ruby? # => true
+PV['foobar'].supported_by_current_ruby? # => false
 
-PV.matched_characters('AHex') # => %w[0 1 2 3 4 5 6 7 8 9 A B C ...]
-PV.matched_codepoints('AHex') # => [48, 49, 50, ...]
-PV.matched_ranges('AHex') # => [48..57, 65..70, 97..102]
+PV['AHex'].matched_characters # => %w[0 1 2 3 4 5 6 7 8 9 A B C ...]
+PV['AHex'].matched_codepoints # => [48, 49, 50, ...]
+PV['AHex'].matched_ranges # => [48..57, 65..70, 97..102]
 ```
 
 ##### Utility methods
