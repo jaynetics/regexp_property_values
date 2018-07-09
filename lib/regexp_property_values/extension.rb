@@ -2,12 +2,14 @@ module RegexpPropertyValues
   module Extension
     def supported_by_current_ruby?
       !!regexp
-    rescue RegexpError, SyntaxError
+    rescue ArgumentError
       false
     end
 
     def regexp
       @regexp ||= /\p{#{self}}/u
+    rescue RegexpError, SyntaxError
+      raise ArgumentError, "Unknown property name #{self}"
     end
 
     if const_defined?(:OnigRegexpPropertyHelper)
