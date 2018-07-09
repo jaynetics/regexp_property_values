@@ -52,18 +52,18 @@ RSpec.describe RegexpPropertyValues do
         result = described_class.all_for_current_ruby
         expect(result).to include('Age=6.1')
         expect(result).to include('Chakma')
-        expect(result).to include('In_Arabic')
       end
 
-      it 'does not include the dropped `Newline` property' do
-        expect(described_class.all_for_current_ruby).not_to include('Newline')
+      if RUBY_PLATFORM !~ /java/i
+        it 'does not include the dropped `Newline` property' do
+          expect(described_class.all_for_current_ruby).not_to include('Newline')
+        end
       end
     else # ruby 1.9.3 and below - Oniguruma regex engine
       it 'does not include recently added properties' do
         result = described_class.all_for_current_ruby
         expect(result).not_to include('Age=6.1')
         expect(result).not_to include('Chakma')
-        expect(result).not_to include('In_Arabic')
       end
 
       it 'includes the dropped `Newline` property' do

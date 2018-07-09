@@ -20,7 +20,9 @@ Gem::Specification.new do |s|
   end
   s.require_paths = ['lib']
 
-  s.extensions = %w[ext/regexp_property_values/extconf.rb]
+  if RUBY_PLATFORM !~ /java/i
+    s.extensions = %w[ext/regexp_property_values/extconf.rb]
+  end
 
   s.required_ruby_version = '>= 2.0.0'
 

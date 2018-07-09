@@ -33,7 +33,7 @@ module RegexpPropertyValues
 
       def matched_ranges
         require 'set'
-        matched_characters
+        matched_codepoints
           .to_set(SortedSet)
           .divide { |i, j| (i - j).abs == 1 }
           .map { |s| a = s.to_a; a.first..a.last }

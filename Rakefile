@@ -11,5 +11,7 @@ Rake::ExtensionTask.new('regexp_property_values') do |ext|
   ext.lib_dir = 'lib/regexp_property_values'
 end
 
-# recompile before running specs
-task(:spec).enhance([:compile])
+if RUBY_PLATFORM !~ /java/i
+  # recompile before running specs
+  task(:spec).enhance([:compile])
+end
