@@ -7,6 +7,11 @@ RSpec.describe RegexpPropertyValues::Extension do
         %w[0 1 2 3 4 5 6 7 8 9 A B C D E F a b c d e f]
       )
     end
+
+    it 'does not crash or segfault for non-utf-8 encodings' do
+      expect('AHex'.encode('ascii').extend(Extension).matched_characters)
+        .not_to be_empty
+    end
   end
 
   describe '#matched_codepoints' do

@@ -20,7 +20,7 @@ module RegexpPropertyValues
       end
 
       def matched_ranges
-        OnigRegexpPropertyHelper.matched_ranges(self)
+        OnigRegexpPropertyHelper.matched_ranges(self.encode('utf-8'))
       end
 
       def matched_characters
