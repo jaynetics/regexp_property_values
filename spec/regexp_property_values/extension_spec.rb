@@ -32,6 +32,16 @@ RSpec.describe RegexpPropertyValues::Extension do
     end
   end
 
+  describe '#character_set' do
+    it 'returns a CharacterSet with the correct codepoints' do
+      require 'character_set'
+
+      expect('AHex'.extend(Extension).character_set).to eq(
+        CharacterSet.from_ranges(48..57, 65..70, 97..102)
+      )
+    end
+  end
+
   describe '#supported_by_current_ruby?' do
     it 'returns true iff the property is supported' do
       expect('foo'.extend(Extension).supported_by_current_ruby?).to be false

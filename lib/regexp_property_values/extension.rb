@@ -26,6 +26,11 @@ module RegexpPropertyValues
       def matched_characters
         matched_codepoints.map { |cp| cp.chr('utf-8') }
       end
+
+      def character_set
+        require 'character_set'
+        CharacterSet.from_ranges(*matched_ranges)
+      end
     else
       # Ruby fallback - this stuff is slow as hell, and it wont get much faster
 
@@ -49,6 +54,11 @@ module RegexpPropertyValues
                          .map { |cp_number| [cp_number].pack('U') }
 
         @@characters.select { |char| regexp.match?(char) }
+      end
+
+      def character_set
+        require 'character_set'
+        CharacterSet.new(matched_codepoints)
       end
     end
   end

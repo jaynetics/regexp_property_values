@@ -42,6 +42,12 @@ PV['AHex'].matched_codepoints # => [48, 49, 50, ...]
 PV['AHex'].matched_ranges # => [48..57, 65..70, 97..102]
 ```
 
+If [`character_set`](https://github.com/janosch-x/character_set) is installed, you can also do this:
+
+```ruby
+PV['AHex'].character_set # => #<CharacterSet: {48, 49...} (size: 22)>
+```
+
 ##### Utility methods
 
 ```ruby
