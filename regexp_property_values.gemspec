@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.description   = 'This small library lets you see which property values '\
                     'are supported by the regular expression engine of the '\
                     'Ruby version you are running, and what they match.'
-  s.homepage      = 'https://github.com/janosch-x/regexp_property_values'
+  s.homepage      = 'https://github.com/jaynetics/regexp_property_values'
   s.license       = 'MIT'
 
   s.files         = `git ls-files -z`.split("\x0").reject do |f|
