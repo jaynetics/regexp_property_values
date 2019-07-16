@@ -20,6 +20,7 @@ binstubs/*
 bundler_stubs/*/.yardoc
 Gemfile.lock
 /.bundle/
+/.vscode/
 /_yardoc/
 /coverage/
 /doc/

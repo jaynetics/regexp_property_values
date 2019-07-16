@@ -16,22 +16,16 @@ require 'regexp_property_values'
 
 PV = RegexpPropertyValues
 
-PV.all # => ["Alpha", "Blank", "Cntrl", ...]
-PV.by_category # => {"POSIX brackets" => ["Alpha", ...], "Special" => ...}
-PV.short_and_long_names # => [["M", "Grek", ...], ["Mark", "Greek", ...]]
+PV.all # => [<Value name='Alpha'>, <Value name='Blank'>, ...]
 ```
 
 ##### Browse property values supported by the Ruby you are running
 
 ```ruby
-PV.all_for_current_ruby # => ["Alpha", "Blank", "Cntrl", ...]
-
-PV.by_category.map { |k, v| [k, v.select(&:supported_by_current_ruby?] }
-
-# etc.
+PV.all_for_current_ruby # => [<Value name='Alpha'>, <Value name='Blank'>, ...]
 ```
 
-##### Inspect properties
+##### Inspect property values
 
 ```ruby
 PV['alpha'].supported_by_current_ruby? # => true
@@ -51,9 +45,9 @@ PV['AHex'].character_set # => #<CharacterSet: {48, 49...} (size: 22)>
 ##### Utility methods
 
 ```ruby
-# This one takes a few seconds (or minutes, without the C extension)
-PV.alias_hash # => {"M" => "Mark", "Grek" => "Greek", ...}
+# get a Hash of aliases for property names
+PV.alias_hash # => { <Value name='M'> => <Value name='Mark'>, ... }
 
-# download the latest list of possible properties
+# download a list of possible properties for the running Ruby version
 PV.update
 ```

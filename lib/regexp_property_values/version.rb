@@ -1,3 +1,3 @@
 module RegexpPropertyValues
-  VERSION = '0.3.5'
+  VERSION = '1.0.0'
 end
