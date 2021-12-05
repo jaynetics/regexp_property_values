@@ -5,7 +5,7 @@ module RegexpPropertyValues
     require 'fileutils'
     require 'set'
 
-    BASE_URL = 'http://www.unicode.org/Public/'
+    BASE_URL = 'http://www.unicode.org/Public'
 
     UCD_FILES = %w[
       Blocks.txt
@@ -23,9 +23,9 @@ module RegexpPropertyValues
 
     TMP_DIR = File.join(__dir__, 'tmp_ucd')
 
-    def call
+    def call(ucd_path: nil, emoji_path: nil)
       prepare_tmp_dir
-      download_ucd_files
+      download_ucd_files(ucd_path: ucd_path, emoji_path: emoji_path)
       write_values
       write_aliases
       remove_tmp_dir
@@ -37,17 +37,31 @@ module RegexpPropertyValues
       FileUtils.mkdir(TMP_DIR)
     end
 
-    def download_ucd_files
+    def download_ucd_files(ucd_path: nil, emoji_path: nil)
       unicode_version = RbConfig::CONFIG.fetch('UNICODE_VERSION')
       emoji_version   = RbConfig::CONFIG.fetch('UNICODE_EMOJI_VERSION')
-      puts 'This will load ucd and emoji data for the CURRENT RUBY '\
-           "(#{unicode_version} / #{emoji_version}). Run this on the "\
-           'latest Ruby version you want to support. Continue? [y/n]'
-      return puts 'download skipped.' unless $stdin.gets =~ /^y/i
+
+      ucd_path   ||= ENV['RPV_UCD_PATH']
+      emoji_path ||= ENV['RPV_EMOJI_PATH']
+
+      if ucd_path.nil? && emoji_path.nil?
+        puts <<-EOS.gsub(/\n */, ' ')
+          This try will load ucd and emoji data for the CURRENT RUBY (
+          (#{RUBY_VERSION} - ucd #{unicode_version}, emoji #{emoji_version}).
+          Run this on the latest Ruby version you want to support.
+          Unicode directory structure changes sometimes, so you might need to
+          pass the right path(s) as keyword args or ENV vars. Continue? [y/n]'
+        EOS
+
+        return puts 'download skipped.' unless $stdin.gets =~ /^y/i
+      end
+
+      ucd_path   ||= "#{BASE_URL}/#{unicode_version}/ucd"
+      emoji_path ||= "#{BASE_URL}/emoji/#{emoji_version}"
 
       Dir.chdir(TMP_DIR) do
-        UCD_FILES.each   { |f| `wget #{BASE_URL}/#{unicode_version}/ucd/#{f}` }
-        EMOJI_FILES.each { |f| `wget #{BASE_URL}/emoji/#{emoji_version}/#{f}` }
+        UCD_FILES.each   { |f| `wget #{ucd_path}/#{f}` }
+        EMOJI_FILES.each { |f| `wget #{emoji_path}/#{f}` }
       end
     end
 

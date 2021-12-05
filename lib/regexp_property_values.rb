@@ -31,7 +31,7 @@ module RegexpPropertyValues
     end.to_h
   end
 
-  def self.update
-    Updater.call
+  def self.update(ucd_path: nil, emoji_path: nil)
+    Updater.call(ucd_path: ucd_path, emoji_path: emoji_path)
   end
 end
