@@ -1,7 +1,7 @@
 # RegexpPropertyValues
 
 [![Gem Version](https://badge.fury.io/rb/regexp_property_values.svg)](http://badge.fury.io/rb/regexp_property_values)
-[![Build Status](https://travis-ci.org/jaynetics/regexp_property_values.svg?branch=master)](https://travis-ci.org/jaynetics/regexp_property_values)
+[![Build Status](https://github.com/jaynetics/regexp_property_values/workflows/tests/badge.svg)](https://github.com/jaynetics/regexp_property_values/actions)
 
 This small library lets you see which property values are supported by the regular expression engine of the Ruby version you are running and directly reads out their codepoint ranges from there.
 
