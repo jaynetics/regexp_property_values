@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2021-12-05
+
+### Added
+- added new properties from Ruby `3.1.0-dev` to output of `::all`, `::all_for_current_ruby`
+- added options to run `::update` with custom ucd/emoji source paths
+
 ## [1.0.0] - 2019-06-16
 
 ### Changed
