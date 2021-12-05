@@ -30,6 +30,7 @@ Cari;Carian
 Cc;Control
 Cf;Format
 Cher;Cherokee
+Chrs;Chorasmian
 Cn;Unassigned
 Co;Private_Use
 Combining_Mark;Mark
@@ -41,9 +42,14 @@ DI;Default_Ignorable_Code_Point
 Dep;Deprecated
 Deva;Devanagari
 Dia;Diacritic
+Diak;Dives_Akuru
 Dogr;Dogra
 Dsrt;Deseret
 Dupl;Duployan
+EBase;Emoji_Modifier_Base
+EComp;Emoji_Component
+EMod;Emoji_Modifier
+EPres;Emoji_Presentation
 Egyp;Egyptian_Hieroglyphs
 Elba;Elbasan
 Elym;Elymaic
@@ -85,6 +91,7 @@ Kana;Katakana
 Khar;Kharoshthi
 Khmr;Khmer
 Khoj;Khojki
+Kits;Khitan_Small_Script
 Knda;Kannada
 Kthi;Kaithi
 L;Letter
@@ -222,6 +229,7 @@ XIDC;XID_Continue
 XIDS;XID_Start
 Xpeo;Old_Persian
 Xsux;Cuneiform
+Yezi;Yezidi
 Yiii;Yi
 Z;Separator
 Zanb;Zanabazar_Square
