@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        ruby: [ '2.3', '3.0', 'ruby-head', 'jruby-head' ]
+        ruby: [ '2.3', '3.1', 'jruby-head' ] # TODO: 'ruby-head' after https://github.com/knu/sorted_set/issues/11
 
     steps:
       - uses: actions/checkout@v2
