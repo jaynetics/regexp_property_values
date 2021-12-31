@@ -56,6 +56,10 @@ VALUE method_matched_ranges(VALUE self, VALUE arg)
 
 void Init_regexp_property_values()
 {
+#ifdef HAVE_RB_EXT_RACTOR_SAFE
+  rb_ext_ractor_safe(true);
+#endif
+
   VALUE module;
   module = rb_define_module("OnigRegexpPropertyHelper");
   rb_define_singleton_method(module, "matched_ranges", method_matched_ranges, 1);
