@@ -7,6 +7,7 @@ Age=11.0
 Age=12.0
 Age=12.1
 Age=13.0
+Age=14.0
 Age=2.0
 Age=2.1
 Age=3.0
@@ -71,6 +72,7 @@ Coptic
 Cuneiform
 Currency_Symbol
 Cypriot
+Cypro_Minoan
 Cyrillic
 Dash
 Dash_Punctuation
@@ -135,6 +137,7 @@ In_Ancient_Greek_Numbers
 In_Ancient_Symbols
 In_Arabic
 In_Arabic_Extended_A
+In_Arabic_Extended_B
 In_Arabic_Mathematical_Alphabetic_Symbols
 In_Arabic_Presentation_Forms_A
 In_Arabic_Presentation_Forms_B
@@ -196,6 +199,7 @@ In_Cuneiform
 In_Cuneiform_Numbers_and_Punctuation
 In_Currency_Symbols
 In_Cypriot_Syllabary
+In_Cypro_Minoan
 In_Cyrillic
 In_Cyrillic_Extended_A
 In_Cyrillic_Extended_B
@@ -222,6 +226,7 @@ In_Enclosed_Ideographic_Supplement
 In_Ethiopic
 In_Ethiopic_Extended
 In_Ethiopic_Extended_A
+In_Ethiopic_Extended_B
 In_Ethiopic_Supplement
 In_General_Punctuation
 In_Geometric_Shapes
@@ -261,6 +266,7 @@ In_Inscriptional_Parthian
 In_Javanese
 In_Kaithi
 In_Kana_Extended_A
+In_Kana_Extended_B
 In_Kana_Supplement
 In_Kanbun
 In_Kangxi_Radicals
@@ -282,6 +288,8 @@ In_Latin_Extended_B
 In_Latin_Extended_C
 In_Latin_Extended_D
 In_Latin_Extended_E
+In_Latin_Extended_F
+In_Latin_Extended_G
 In_Lepcha
 In_Letterlike_Symbols
 In_Limbu
@@ -346,6 +354,7 @@ In_Old_Persian
 In_Old_Sogdian
 In_Old_South_Arabian
 In_Old_Turkic
+In_Old_Uyghur
 In_Optical_Character_Recognition
 In_Oriya
 In_Ornamental_Dingbats
@@ -408,6 +417,7 @@ In_Tai_Xuan_Jing_Symbols
 In_Takri
 In_Tamil
 In_Tamil_Supplement
+In_Tangsa
 In_Tangut
 In_Tangut_Components
 In_Tangut_Supplement
@@ -417,15 +427,18 @@ In_Thai
 In_Tibetan
 In_Tifinagh
 In_Tirhuta
+In_Toto
 In_Transport_and_Map_Symbols
 In_Ugaritic
 In_Unified_Canadian_Aboriginal_Syllabics
 In_Unified_Canadian_Aboriginal_Syllabics_Extended
+In_Unified_Canadian_Aboriginal_Syllabics_Extended_A
 In_Vai
 In_Variation_Selectors
 In_Variation_Selectors_Supplement
 In_Vedic_Extensions
 In_Vertical_Forms
+In_Vithkuqi
 In_Wancho
 In_Warang_Citi
 In_Yezidi
@@ -433,6 +446,7 @@ In_Yi_Radicals
 In_Yi_Syllables
 In_Yijing_Hexagram_Symbols
 In_Zanabazar_Square
+In_Znamenny_Musical_Notation
 Inherited
 Initial_Punctuation
 Inscriptional_Pahlavi
@@ -508,6 +522,7 @@ Old_Persian
 Old_Sogdian
 Old_South_Arabian
 Old_Turkic
+Old_Uyghur
 Open_Punctuation
 Oriya
 Osage
@@ -572,6 +587,7 @@ Tai_Tham
 Tai_Viet
 Takri
 Tamil
+Tangsa
 Tangut
 Telugu
 Terminal_Punctuation
@@ -581,6 +597,7 @@ Tibetan
 Tifinagh
 Tirhuta
 Titlecase_Letter
+Toto
 Ugaritic
 Unassigned
 Unified_Ideograph
@@ -590,6 +607,7 @@ Uppercase
 Uppercase_Letter
 Vai
 Variation_Selector
+Vithkuqi
 Wancho
 Warang_Citi
 White_Space

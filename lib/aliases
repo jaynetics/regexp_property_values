@@ -35,6 +35,7 @@ Cn;Unassigned
 Co;Private_Use
 Combining_Mark;Mark
 Copt;Coptic
+Cpmn;Cypro_Minoan
 Cprt;Cypriot
 Cs;Surrogate
 Cyrl;Cyrillic
@@ -154,6 +155,7 @@ Orkh;Old_Turkic
 Orya;Oriya
 Osge;Osage
 Osma;Osmanya
+Ougr;Old_Uyghur
 P;Punctuation
 PCM;Prepended_Concatenation_Mark
 Palm;Palmyrene
@@ -218,10 +220,12 @@ Tglg;Tagalog
 Thaa;Thaana
 Tibt;Tibetan
 Tirh;Tirhuta
+Tnsa;Tangsa
 UIdeo;Unified_Ideograph
 Ugar;Ugaritic
 VS;Variation_Selector
 Vaii;Vai
+Vith;Vithkuqi
 WSpace;White_Space
 Wara;Warang_Citi
 Wcho;Wancho
