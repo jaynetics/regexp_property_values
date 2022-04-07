@@ -32,3 +32,8 @@ if RUBY_PLATFORM !~ /java/i
   # recompile before running specs
   task(:spec).enhance([:compile])
 end
+
+task :update do
+  require_relative 'lib/regexp_property_values'
+  RegexpPropertyValues.update
+end

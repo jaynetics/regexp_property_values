@@ -5,7 +5,7 @@ module RegexpPropertyValues
     require 'fileutils'
     require 'set'
 
-    BASE_URL = 'http://www.unicode.org/Public'
+    BASE_URL = 'https://www.unicode.org/Public/UCD/latest/ucd'
 
     UCD_FILES = %w[
       Blocks.txt
@@ -38,26 +38,11 @@ module RegexpPropertyValues
     end
 
     def download_ucd_files(ucd_path: nil, emoji_path: nil)
-      unicode_version = RbConfig::CONFIG.fetch('UNICODE_VERSION')
-      emoji_version   = RbConfig::CONFIG.fetch('UNICODE_EMOJI_VERSION')
+      puts 'This will try to load the latest UCD data. Continue? [y/n]'
+      return puts 'download skipped.' unless $stdin.gets =~ /^y/i
 
-      ucd_path   ||= ENV['RPV_UCD_PATH']
-      emoji_path ||= ENV['RPV_EMOJI_PATH']
-
-      if ucd_path.nil? && emoji_path.nil?
-        puts <<-EOS.gsub(/\n */, ' ')
-          This try will load ucd and emoji data for the CURRENT RUBY (
-          (#{RUBY_VERSION} - ucd #{unicode_version}, emoji #{emoji_version}).
-          Run this on the latest Ruby version you want to support.
-          Unicode directory structure changes sometimes, so you might need to
-          pass the right path(s) as keyword args or ENV vars. Continue? [y/n]'
-        EOS
-
-        return puts 'download skipped.' unless $stdin.gets =~ /^y/i
-      end
-
-      ucd_path   ||= "#{BASE_URL}/#{unicode_version}/ucd"
-      emoji_path ||= "#{BASE_URL}/emoji/#{emoji_version}"
+      ucd_path   ||= ENV['RPV_UCD_PATH']   || BASE_URL
+      emoji_path ||= ENV['RPV_EMOJI_PATH'] || "#{BASE_URL}/emoji/"
 
       Dir.chdir(TMP_DIR) do
         UCD_FILES.each   { |f| `wget #{ucd_path}/#{f}` }
