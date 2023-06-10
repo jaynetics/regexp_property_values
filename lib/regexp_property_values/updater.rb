@@ -61,7 +61,9 @@ module RegexpPropertyValues
       ]
 
       # special properties
-      @values += %w[Any Assigned In_No_Block Unknown]
+      @values += %w[
+        Any Assigned Extended_Pictographic In_No_Block Unknown
+      ]
 
       # legacy properties
       @values += %w[Newline]

@@ -8,6 +8,7 @@ Age=12.0
 Age=12.1
 Age=13.0
 Age=14.0
+Age=15.0
 Age=2.0
 Age=2.1
 Age=3.0
@@ -96,6 +97,7 @@ Emoji_Modifier_Base
 Emoji_Presentation
 Enclosing_Mark
 Ethiopic
+Extended_Pictographic
 Extender
 Final_Punctuation
 Format
@@ -138,6 +140,7 @@ In_Ancient_Symbols
 In_Arabic
 In_Arabic_Extended_A
 In_Arabic_Extended_B
+In_Arabic_Extended_C
 In_Arabic_Mathematical_Alphabetic_Symbols
 In_Arabic_Presentation_Forms_A
 In_Arabic_Presentation_Forms_B
@@ -177,6 +180,7 @@ In_CJK_Unified_Ideographs_Extension_D
 In_CJK_Unified_Ideographs_Extension_E
 In_CJK_Unified_Ideographs_Extension_F
 In_CJK_Unified_Ideographs_Extension_G
+In_CJK_Unified_Ideographs_Extension_H
 In_Carian
 In_Caucasian_Albanian
 In_Chakma
@@ -204,10 +208,12 @@ In_Cyrillic
 In_Cyrillic_Extended_A
 In_Cyrillic_Extended_B
 In_Cyrillic_Extended_C
+In_Cyrillic_Extended_D
 In_Cyrillic_Supplement
 In_Deseret
 In_Devanagari
 In_Devanagari_Extended
+In_Devanagari_Extended_A
 In_Dingbats
 In_Dives_Akuru
 In_Dogra
@@ -265,6 +271,7 @@ In_Inscriptional_Pahlavi
 In_Inscriptional_Parthian
 In_Javanese
 In_Kaithi
+In_Kaktovik_Numerals
 In_Kana_Extended_A
 In_Kana_Extended_B
 In_Kana_Supplement
@@ -273,6 +280,7 @@ In_Kangxi_Radicals
 In_Kannada
 In_Katakana
 In_Katakana_Phonetic_Extensions
+In_Kawi
 In_Kayah_Li
 In_Kharoshthi
 In_Khitan_Small_Script
@@ -337,6 +345,7 @@ In_Myanmar_Extended_A
 In_Myanmar_Extended_B
 In_NKo
 In_Nabataean
+In_Nag_Mundari
 In_Nandinagari
 In_New_Tai_Lue
 In_Newa
@@ -456,6 +465,7 @@ Join_Control
 Kaithi
 Kannada
 Katakana
+Kawi
 Kayah_Li
 Kharoshthi
 Khitan_Small_Script
@@ -502,6 +512,7 @@ Mro
 Multani
 Myanmar
 Nabataean
+Nag_Mundari
 Nandinagari
 New_Tai_Lue
 Newa

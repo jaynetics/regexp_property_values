@@ -33,6 +33,7 @@ if RUBY_PLATFORM !~ /java/i
   task(:spec).enhance([:compile])
 end
 
+desc 'Update property lists'
 task :update do
   require_relative 'lib/regexp_property_values'
   RegexpPropertyValues.update
