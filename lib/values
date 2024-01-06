@@ -9,6 +9,7 @@ Age=12.1
 Age=13.0
 Age=14.0
 Age=15.0
+Age=15.1
 Age=2.0
 Age=2.1
 Age=3.0
@@ -124,6 +125,9 @@ Hiragana
 Hyphen
 IDS_Binary_Operator
 IDS_Trinary_Operator
+IDS_Unary_Operator
+ID_Compat_Math_Continue
+ID_Compat_Math_Start
 ID_Continue
 ID_Start
 Ideographic
@@ -181,6 +185,7 @@ In_CJK_Unified_Ideographs_Extension_E
 In_CJK_Unified_Ideographs_Extension_F
 In_CJK_Unified_Ideographs_Extension_G
 In_CJK_Unified_Ideographs_Extension_H
+In_CJK_Unified_Ideographs_Extension_I
 In_Carian
 In_Caucasian_Albanian
 In_Chakma

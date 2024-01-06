@@ -56,6 +56,7 @@ Elba;Elbasan
 Elym;Elymaic
 Ethi;Ethiopic
 Ext;Extender
+ExtPict;Extended_Pictographic
 Geor;Georgian
 Glag;Glagolitic
 Gong;Gunjala_Gondi
@@ -83,6 +84,7 @@ IDC;ID_Continue
 IDS;ID_Start
 IDSB;IDS_Binary_Operator
 IDST;IDS_Trinary_Operator
+IDSU;IDS_Unary_Operator
 Ideo;Ideographic
 Ital;Old_Italic
 Java;Javanese
