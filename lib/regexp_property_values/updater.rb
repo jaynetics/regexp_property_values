@@ -15,6 +15,7 @@ module RegexpPropertyValues
       PropertyValueAliases.txt
       PropList.txt
       Scripts.txt
+      auxiliary/GraphemeBreakProperty.txt
     ]
 
     EMOJI_FILES = %w[
@@ -86,6 +87,10 @@ module RegexpPropertyValues
 
       scan('DerivedAge.txt', /^[\dA-F.]+ *; (?<age_num>[\d.]+)/) do |caps|
         @values << 'Age=' + caps[:age_num]
+      end
+
+      scan('GraphemeBreakProperty.txt', /; *(?<name>\w+) *#/) do |caps|
+        @values << 'Grapheme_Cluster_Break=' + caps[:name]
       end
 
       File.write(RegexpPropertyValues::VALUES_PATH, @values.sort.join("\n"))
