@@ -29,9 +29,17 @@ RSpec.describe RegexpPropertyValues::Value do
       )
     end
 
+    it 'omits surrogates' do
+      expect(value('surrogate').matched_characters).to eq []
+    end
+
     it 'does not crash or segfault for non-utf-8 encodings' do
       expect(value('AHex'.encode('ascii')).matched_characters)
         .not_to be_empty
+    end
+
+    it 'raises for unknown properties' do
+      expect { value('foo').matched_codepoints }.to raise_error(RegexpPropertyValues::Error)
     end
   end
 
@@ -43,6 +51,17 @@ RSpec.describe RegexpPropertyValues::Value do
          97, 98, 99, 100, 101, 102]
       )
     end
+
+    it 'works for large and non-contiguous properties' do
+      cps = value('age=8.0').matched_codepoints
+      expect(cps.size).to be > 100_000
+      [0, 928, 929, 931, 932].each { |cp| expect(cps).to include(cp) }
+      expect(cps).not_to include(930)
+    end
+
+    it 'raises for unknown properties' do
+      expect { value('foo').matched_codepoints }.to raise_error(RegexpPropertyValues::Error)
+    end
   end
 
   describe '#matched_ranges' do
@@ -50,6 +69,10 @@ RSpec.describe RegexpPropertyValues::Value do
       expect(value('AHex').matched_ranges).to eq(
         [48..57, 65..70, 97..102]
       )
+    end
+
+    it 'raises for unknown properties' do
+      expect { value('foo').matched_codepoints }.to raise_error(RegexpPropertyValues::Error)
     end
   end
 

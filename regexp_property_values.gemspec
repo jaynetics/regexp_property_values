@@ -22,5 +22,5 @@ Gem::Specification.new do |s|
 
   s.extensions = %w[ext/regexp_property_values/extconf.rb]
 
-  s.required_ruby_version = '>= 2.0.0'
+  s.required_ruby_version = '>= 2.1.0'
 end

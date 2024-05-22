@@ -34,6 +34,8 @@ PV['foobar'].supported_by_current_ruby? # => false
 PV['AHex'].matched_characters # => %w[0 1 2 3 4 5 6 7 8 9 A B C ...]
 PV['AHex'].matched_codepoints # => [48, 49, 50, ...]
 PV['AHex'].matched_ranges # => [48..57, 65..70, 97..102]
+# Note: #matched_characters is slow for large properties and you
+# may not want to use it in time-critical code. It also omits surrogates.
 
 PV['foobar'].matched_ranges # => RegexpPropertyValues::Error
 ```

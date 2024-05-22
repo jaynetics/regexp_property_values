@@ -2,11 +2,17 @@ module RegexpPropertyValues
   class Value
     module ExtAdapter
       def matched_characters
-        matched_codepoints.map { |cp| cp.chr('utf-8') }
+        acc = []
+        matched_codepoints.each do |cp|
+          acc << cp.chr('utf-8') if cp < 0xD800 || cp > 0xDFFF
+        end
+        acc
       end
 
       def matched_codepoints
-        matched_ranges.flat_map(&:to_a)
+        OnigRegexpPropertyHelper.matched_codepoints(name)
+      rescue ArgumentError
+        raise_unsupported_or_unknown_error
       end
 
       def matched_ranges
